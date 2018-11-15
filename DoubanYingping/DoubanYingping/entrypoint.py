@@ -4,9 +4,13 @@ import time
 # execute(['scrapy', 'crawl', 'yingping', '-a', 'start_urls=https://movie.douban.com/subject/1296141/'])
 
 if __name__ == "__main__":
-    os.system('scrapy crawl getfilmurls')
+    os.system('scrapy crawl yingping -a start_urls=https://movie.douban.com/subject/27605698/')
+
+    # os.system('scrapy crawl getfilmurls')
+
     # time.sleep(2)
     # with open('./urls.txt', 'r') as f:
     #     url = f.readline()
     #     print(url)
     #     os.system('scrapy crawl yingping -a start_urls='+url.strip())
+    # os.system('scrapy shell "http://quotes.toscrape.com/page/1/"')

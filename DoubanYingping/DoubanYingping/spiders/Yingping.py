@@ -13,7 +13,7 @@ class Getfilmurls(scrapy.Spider):
 
     def start_requests(self):
         # 在这里设置抓取页数
-        for i in range(0, 6):
+        for i in range(0, 2):
             url = self.base_url + str(i*20)
             yield scrapy.Request(url, callback=self.get_urls)
 
@@ -26,7 +26,6 @@ class Getfilmurls(scrapy.Spider):
         for film in data['data']:
             url = film['url']
             os.system('scrapy crawl yingping -a start_urls=' + url.strip())
-            time.sleep(3)
 
 class Yingping(CrawlSpider):
     name = 'yingping'
@@ -35,6 +34,7 @@ class Yingping(CrawlSpider):
         Rule(LinkExtractor(allow=r"/subject/\d+/reviews\?start=\d+$")),
         Rule(link_extractor=LinkExtractor(allow=r"review/\d+/"), callback="get_yingping", follow=False)
         ]
+    num = 1
 
     def __init__(self, start_urls=None, *args, **kwargs):
         super(Yingping, self).__init__(*args, **kwargs)
@@ -57,6 +57,8 @@ class Yingping(CrawlSpider):
         item['content'] = content
         item['filmname'] = filmname
         yield item
+        print(self.num)
+        self.num += 1
 
 
 

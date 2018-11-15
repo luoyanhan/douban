@@ -14,7 +14,11 @@ BOT_NAME = 'DoubanYingping'
 SPIDER_MODULES = ['DoubanYingping.spiders']
 NEWSPIDER_MODULE = 'DoubanYingping.spiders'
 DOWNLOAD_DELAY = 1
-DEPTH_LIMIT = 3
+# DEPTH_LIMIT = 1
+COOKIES_ENABLED = False
+CONCURRENT_REQUESTS = 32
+# CONCURRENT_REQUESTS_PER_IP = 100
+# LOG_LEVEL = 'INFO'
 
 DEFAULT_REQUEST_HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36',
